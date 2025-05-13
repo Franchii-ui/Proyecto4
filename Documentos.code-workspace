@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"name": "Documentos",
+			"path": "."
+		}
+	],
+	"settings": {
+		"maven.view": "hierarchical",
+		"java.configuration.updateBuildConfiguration": "interactive"
+	}
+}

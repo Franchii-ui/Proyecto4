@@ -12,7 +12,7 @@ Para inicializar y ejecutar este proyecto en tu entorno local, sigue los siguien
 * **Apache Maven:** El proyecto utiliza Maven para la gestión de dependencias y la construcción. Asegúrate de tener Maven instalado y configurado en tu sistema. Puedes verificar tu instalación ejecutando `mvn -v` en la terminal.
 * *Desde aquí podrás descargar Maven si no lo tienes en tu computadora: https://maven.apache.org/install.html**
   
-* **MySQL Server:** Necesitas tener un servidor MySQL instalado y en ejecución.
+* **MySQL Server:** Necesitas tener un servidor MySQL instalado y en ejecución. Se recomienda tener tanto MySQL Workbech como MySQL Server.
 
 ### Pasos de Inicialización
 
@@ -70,7 +70,7 @@ Para inicializar y ejecutar este proyecto en tu entorno local, sigue los siguien
         private static final String USUARIO = "tu_usuario"; // Reemplaza con tu nombre de usuario de MySQL
         private static final String CONTRASEÑA = "tu_contraseña"; // Reemplaza con tu contraseña de MySQL
         ```
-*En este caso solo tenemos el usuario root con su respectiva contraseña, crear en MySQL el root con la contraseña que prefieras para poder acceder*
+*En este caso solo tenemos el usuario root con su respectiva contraseña, crear en MySQL el root con la contraseña que prefieras para poder acceder.*
 
 3.  **Construir el Proyecto con Maven:** Navega a la raíz del proyecto en la terminal y ejecuta el siguiente comando para descargar las dependencias y construir el proyecto:
 

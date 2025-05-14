@@ -42,3 +42,10 @@
 [2025-05-14 12:54:11] Animal registrado en la base de datos con ID: 2
 [2025-05-14 12:54:20] Se obtuvieron todos los animales de la base de datos para el respaldo.
 [2025-05-14 12:54:20] Se obtuvieron todas las actividades de la base de datos para el respaldo.
+[2025-05-14 13:40:42] Empleado registrado en la base de datos: Nombre=Os-elman, Rol=Cuidador
+[2025-05-14 13:41:50] Empleado con ID 5 actualizado en la base de datos.
+[2025-05-14 13:42:03] Actividad con ID 1 consultada de la base de datos.
+[2025-05-14 13:42:13] Actividad con ID 1 consultada de la base de datos.
+[2025-05-14 13:54:46] Empleado con ID 5 actualizado en la base de datos.
+[2025-05-14 13:55:30] Se obtuvieron todos los animales de la base de datos para el respaldo.
+[2025-05-14 13:55:30] Se obtuvieron todas las actividades de la base de datos para el respaldo.

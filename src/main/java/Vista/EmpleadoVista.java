@@ -54,9 +54,9 @@ public class EmpleadoVista {
         Empleado empleadoExistente = empleadoControlador.buscarEmpleadoPorId(id);
         if (empleadoExistente != null) {
             System.out.print("Nuevo Nombre (" + empleadoExistente.getNombre() + "): ");
-            String nombre = InputHelper.leerString("").isEmpty() ? empleadoExistente.getNombre() : InputHelper.leerString("");
+            String nombre = InputHelper.leerString("");
             System.out.print("Nuevo Rol (" + empleadoExistente.getRol() + "): ");
-            String rol = InputHelper.leerString("").isEmpty() ? empleadoExistente.getRol() : InputHelper.leerString("");
+            String rol = InputHelper.leerString("");
             System.out.print("Nuevo Teléfono (" + empleadoExistente.getTelefono() + ", máximo 9 dígitos numéricos): ");
             String telefono = InputHelper.leerTelefono("");
             if (telefono.isEmpty()) telefono = empleadoExistente.getTelefono();

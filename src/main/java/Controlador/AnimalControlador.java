@@ -26,10 +26,10 @@ public class AnimalControlador {
             pstmt.setString(6, animal.getUbicacion());
             pstmt.setString(7, animal.getEstado());
             pstmt.executeUpdate();
-            LogUtil.registrarLog("Animal registrado en la base de datos con ID: " + animal.getIdentificadorUnico()); // Registrar log
+            LogUtil.registrarLog("Animal registrado en la base de datos con ID: " + animal.getIdentificadorUnico());
             System.out.println("Animal registrado en la base de datos con ID: " + animal.getIdentificadorUnico());
         } catch (SQLException e) {
-            LogUtil.registrarLog("Error al registrar el animal en la base de datos con ID: " + animal.getIdentificadorUnico() + ": " + e.getMessage()); // Registrar error
+            LogUtil.registrarLog("Error al registrar el animal en la base de datos con ID: " + animal.getIdentificadorUnico() + ": " + e.getMessage());
             System.err.println("Error al registrar el animal en la base de datos: " + e.getMessage());
         }
     }
@@ -153,4 +153,20 @@ public class AnimalControlador {
             System.err.println("Error al marcar el animal como " + nuevoEstado + " en la base de datos: " + e.getMessage());
         }
     }
+
+   public String obtenerUltimoIdentificadorUnico() {
+    String sql = "SELECT identificador_unico FROM animales ORDER BY identificador_unico DESC LIMIT 1";
+    String ultimoId = null;
+    try (Connection conexion = ConexionBD.obtenerConexion();
+         PreparedStatement pstmt = conexion.prepareStatement(sql);
+         ResultSet rs = pstmt.executeQuery()) {
+        if (rs.next()) {
+            ultimoId = rs.getString("identificador_unico");
+        }
+    } catch (SQLException e) {
+        LogUtil.registrarLog("Error al obtener el último identificador único: " + e.getMessage());
+        System.err.println("Error al obtener el último identificador único: " + e.getMessage());
+    }
+    return ultimoId;
+}
 }

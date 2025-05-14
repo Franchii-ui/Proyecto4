@@ -37,3 +37,8 @@
 [2025-05-13 17:23:15] Se obtuvieron todas las actividades de la base de datos para el respaldo.
 [2025-05-13 17:34:46] Se obtuvieron todos los animales de la base de datos para el respaldo.
 [2025-05-13 17:34:46] Se obtuvieron todas las actividades de la base de datos para el respaldo.
+[2025-05-14 12:28:22] Error al registrar el animal en la base de datos con ID: 1: Duplicate entry '1' for key 'animales.PRIMARY'
+[2025-05-14 12:49:38] Error al registrar el animal en la base de datos con ID: 1: Duplicate entry '1' for key 'animales.PRIMARY'
+[2025-05-14 12:54:11] Animal registrado en la base de datos con ID: 2
+[2025-05-14 12:54:20] Se obtuvieron todos los animales de la base de datos para el respaldo.
+[2025-05-14 12:54:20] Se obtuvieron todas las actividades de la base de datos para el respaldo.

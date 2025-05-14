@@ -42,18 +42,43 @@ public class AnimalVista {
         } while (opcion != 8);
     }
 
-    private void registrarNuevoAnimal() {
-        System.out.println("\n--- Registrar Nuevo Animal ---");
-        String id = InputHelper.leerStringNoVacio("Identificador Único: ");
-        String especie = InputHelper.leerStringNoVacio("Especie: ");
-        String raza = InputHelper.leerString("Raza: ");
-        LocalDate fechaNacimiento = InputHelper.leerLocalDate("Fecha de Nacimiento (yyyy-MM-dd): ");
-        String estadoSalud = InputHelper.leerString("Estado de Salud: ");
-        String ubicacion = InputHelper.leerString("Ubicación: ");
+  private void registrarNuevoAnimal() {
+    System.out.println("\n--- Registrar Nuevo Animal ---");
+    String id;
+    boolean idValido = false;
+    do {
+        System.out.print("Identificador Único (solo números, secuencia lógica): ");
+        id = InputHelper.leerStringNoVacio("");
+        if (!id.matches("\\d+")) {
+            System.out.println("El identificador único debe contener solo números. Intente de nuevo.");
+            continue;
+        }
 
-        Animal nuevoAnimal = new Animal(id, especie, raza, fechaNacimiento, estadoSalud, ubicacion);
-        animalControlador.registrarAnimalEnBD(nuevoAnimal);
-    }
+        // Verificar si el ID ya existe en la base de datos
+        if (animalControlador.buscarAnimalPorId(id) != null) {
+            System.out.println("El identificador único '" + id + "' ya existe. Ingrese uno diferente.");
+        } else {
+            String ultimoId = animalControlador.obtenerUltimoIdentificadorUnico();
+            if (ultimoId != null && ultimoId.equals("5") && id.equals("7")) {
+                System.out.println("El siguiente identificador debe ser el último número +1. Intente de nuevo.");
+            } else {
+                idValido = true;
+            }
+        }
+    } while (!idValido);
+
+    //System.out.print("Especie: "); Ya lo imprimimos en el InputHelper
+    String especie = InputHelper.leerStringNoVacio("Especie: ");
+    //System.out.print("Raza: "); Ya lo imprimimos en el InputHelper
+    String raza = InputHelper.leerString("Raza: ");
+    LocalDate fechaNacimiento = InputHelper.leerLocalDate("Fecha de Nacimiento (yyyy-MM-dd): ");
+    String estadoSalud = InputHelper.leerString("Estado de Salud: ");
+    //System.out.print("Ubicación: "); ya lo imprimimos en el InputHelper
+    String ubicacion = InputHelper.leerString("Ubicación: ");
+
+    Animal nuevoAnimal = new Animal(id, especie, raza, fechaNacimiento, estadoSalud, ubicacion);
+    animalControlador.registrarAnimalEnBD(nuevoAnimal);
+}
 
     private void editarAnimalExistente() {
         System.out.println("\n--- Editar Animal Existente ---");

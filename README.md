@@ -87,4 +87,3 @@ Para inicializar y ejecutar este proyecto en tu entorno local, sigue los siguien
     También puedes ejecutar la aplicación directamente desde tu IDE (como VS Code o Eclipse) configurando una ejecución para la clase `Vista.ConsolaVista`.
 
 ¡Ahora deberías poder ejecutar el sistema de gestión de la granja digital en tu entorno local!
-# Proyecto4

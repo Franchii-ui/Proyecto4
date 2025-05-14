@@ -69,6 +69,7 @@ Para inicializar y ejecutar este proyecto en tu entorno local, sigue los siguien
         private static final String CONTRASEÑA = "tu_contraseña"; // Reemplaza con tu contraseña de MySQL
         ```
 *En este caso solo tenemos el usuario root con su respectiva contraseña, crear en MySQL el root con la contraseña que prefieras para poder acceder*
+
 ##3.  **Construir el Proyecto con Maven:** Navega a la raíz del proyecto en la terminal y ejecuta el siguiente comando para descargar las dependencias y construir el proyecto:
 
     ```bash

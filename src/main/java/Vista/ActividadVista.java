@@ -1,6 +1,8 @@
 package Vista;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import Controlador.ActividadControlador;
 import Granja.Actividad;
@@ -38,10 +40,28 @@ public class ActividadVista {
         if (fechaHora == null) return;
         int empleadoId = InputHelper.leerEnteroPositivo("ID del Empleado Responsable: ");
         String tipo = InputHelper.leerStringNoVacio("Tipo de Actividad: ");
-        String animalesStr = InputHelper.leerString("IDs de Animales Involucrados (separados por comas, si aplica): ");
+        List<String> animalesInvolucradosIds = leerAnimalesInvolucrados();
 
-        Actividad nuevaActividad = new Actividad(0, fechaHora, empleadoId, tipo, animalesStr);
+        Actividad nuevaActividad = new Actividad(0, fechaHora, empleadoId, tipo, String.join(",", animalesInvolucradosIds));
         actividadControlador.registrarActividadEnBD(nuevaActividad);
+    }
+
+    private List<String> leerAnimalesInvolucrados() {
+        List<String> animalesIds = new ArrayList<>();
+        System.out.println("Ingrese los IDs de los animales involucrados (separados por comas, solo enteros):");
+        String animalesStr = InputHelper.leerString("");
+        if (!animalesStr.isEmpty()) {
+            String[] ids = animalesStr.split(",");
+            for (String id : ids) {
+                String trimmedId = id.trim();
+                if (!trimmedId.matches("\\d+")) {
+                    System.out.println("ID de animal inválido: " + trimmedId + ". Solo se aceptan enteros.");
+                    return new ArrayList<>(); // Devolver una lista vacía o manejar el error de otra manera
+                }
+                animalesIds.add(trimmedId);
+            }
+        }
+        return animalesIds;
     }
 
     private void consultarActividadExistente() {

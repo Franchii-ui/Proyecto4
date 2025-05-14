@@ -10,8 +10,8 @@ Para inicializar y ejecutar este proyecto en tu entorno local, sigue los siguien
 
 * **Java Development Kit (JDK):** Asegúrate de tener instalado Java en tu sistema. Se recomienda la versión 17 o superior. Puedes verificar tu instalación ejecutando `java -version` en la terminal.
 * **Apache Maven:** El proyecto utiliza Maven para la gestión de dependencias y la construcción. Asegúrate de tener Maven instalado y configurado en tu sistema. Puedes verificar tu instalación ejecutando `mvn -v` en la terminal.
-* **Desde aquí podrás descargar Maven si no lo tienes en tu computadora: https://maven.apache.org/install.html**
-* 
+* *Desde aquí podrás descargar Maven si no lo tienes en tu computadora: https://maven.apache.org/install.html**
+  
 * **MySQL Server:** Necesitas tener un servidor MySQL instalado y en ejecución.
 
 ### Pasos de Inicialización

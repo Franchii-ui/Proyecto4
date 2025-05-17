@@ -8,7 +8,8 @@ public class Empleado {
     private String rol;
     private String telefono;
     private LocalDate fechaContratacion;
-
+// Constructor que permite establecer todos los atributos del empleado
+    // Se puede usar para crear un nuevo empleado o para actualizar uno existente
     public Empleado(int idEmpleado, String nombre, String rol, String telefono, LocalDate fechaContratacion) {
         this.idEmpleado = idEmpleado;
         this.nombre = nombre;
@@ -53,6 +54,7 @@ public class Empleado {
     public void setFechaContratacion(LocalDate fechaContratacion) {
         this.fechaContratacion = fechaContratacion;
     }
+
 
     @Override
     public String toString() {

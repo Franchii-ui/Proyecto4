@@ -49,3 +49,9 @@
 [2025-05-14 13:54:46] Empleado con ID 5 actualizado en la base de datos.
 [2025-05-14 13:55:30] Se obtuvieron todos los animales de la base de datos para el respaldo.
 [2025-05-14 13:55:30] Se obtuvieron todas las actividades de la base de datos para el respaldo.
+[2025-05-14 18:03:35] Se obtuvieron todos los animales de la base de datos para el respaldo.
+[2025-05-14 18:03:35] Se obtuvieron todas las actividades de la base de datos para el respaldo.
+[2025-05-14 18:23:08] Empleado registrado en la base de datos: Nombre=Vivi, Rol=Encargado
+[2025-05-14 18:32:34] Animal registrado en la base de datos con ID: 1
+[2025-05-14 18:33:23] Se obtuvieron todos los animales de la base de datos para el respaldo.
+[2025-05-14 18:33:23] Se obtuvieron todas las actividades de la base de datos para el respaldo.

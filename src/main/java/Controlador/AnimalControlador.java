@@ -13,7 +13,10 @@ import Utilidades.ConexionBD;
 import Utilidades.LogUtil;
 
 public class AnimalControlador {
-
+// Método para registrar un animal en la base de datos
+    // Este método toma un objeto Animal y lo inserta en la tabla de animales
+    // Se utiliza un PreparedStatement para evitar inyecciones SQL
+    // Se registra un log del animal registrado
     public void registrarAnimalEnBD(Animal animal) {
         String sql = "INSERT INTO animales (identificador_unico, especie, raza, fecha_nacimiento, estado_salud, ubicacion, estado) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (Connection conexion = ConexionBD.obtenerConexion();
@@ -33,7 +36,8 @@ public class AnimalControlador {
             System.err.println("Error al registrar el animal en la base de datos: " + e.getMessage());
         }
     }
-
+// Método para buscar un animal por su ID
+    // Este método toma un ID de animal y ejecuta una consulta SQL para buscarlo
     public Animal buscarAnimalPorId(String identificadorUnico) {
         String sql = "SELECT especie, raza, fecha_nacimiento, estado_salud, ubicacion, estado FROM animales WHERE identificador_unico = ?";
         Animal animal = null;
@@ -53,6 +57,9 @@ public class AnimalControlador {
         }
         return animal;
     }
+    // Método para obtener todos los animales de la base de datos
+    // Este método ejecuta una consulta SQL para seleccionar todos los animales
+    // Se utiliza un PreparedStatement para evitar inyecciones SQL
     public List<Animal> obtenerTodosLosAnimales() {
     String sql = "SELECT identificador_unico, especie, raza, fecha_nacimiento, estado_salud, ubicacion, estado FROM animales";
     List<Animal> animales = new ArrayList<>();
@@ -74,7 +81,9 @@ public class AnimalControlador {
     }
     return animales;
 }
-
+// Método para actualizar un animal en la base de datos
+    // Este método toma un objeto Animal y actualiza sus datos en la tabla de animales
+    // Se utiliza un PreparedStatement para evitar inyecciones SQL
     public void actualizarAnimalEnBD(Animal animal) {
         String sql = "UPDATE animales SET especie = ?, raza = ?, fecha_nacimiento = ?, estado_salud = ?, ubicacion = ? WHERE identificador_unico = ?";
         try (Connection conexion = ConexionBD.obtenerConexion();
@@ -95,7 +104,8 @@ public class AnimalControlador {
             System.err.println("Error al actualizar el animal en la base de datos: " + e.getMessage());
         }
     }
-
+// Método para eliminar un animal de la base de datos
+    // Este método toma un ID de animal y lo elimina de la tabla de animales
     public void eliminarAnimalEnBD(String identificadorUnico) {
         String sql = "DELETE FROM animales WHERE identificador_unico = ?";
         try (Connection conexion = ConexionBD.obtenerConexion();
@@ -111,7 +121,7 @@ public class AnimalControlador {
             System.err.println("Error al eliminar el animal de la base de datos: " + e.getMessage());
         }
     }
-
+//Marcar animales como vendidos o fallecidos
     public void marcarAnimalComoVendidoEnBD(String identificadorUnico) {
         String sql = "UPDATE animales SET estado = 'Vendido' WHERE identificador_unico = ?";
         actualizarEstadoAnimal(identificadorUnico, sql, "vendido");
@@ -121,7 +131,7 @@ public class AnimalControlador {
         String sql = "UPDATE animales SET estado = 'Fallecido' WHERE identificador_unico = ?";
         actualizarEstadoAnimal(identificadorUnico, sql, "fallecido");
     }
-
+//Trasladar animales
     public void trasladarAnimalEnBD(String identificadorUnico, String nuevaUbicacion) {
         String sql = "UPDATE animales SET ubicacion = ? WHERE identificador_unico = ?";
         try (Connection conexion = ConexionBD.obtenerConexion();
@@ -138,7 +148,7 @@ public class AnimalControlador {
             System.err.println("Error al trasladar el animal en la base de datos: " + e.getMessage());
         }
     }
-
+//Actualizar estado de los animales
     private void actualizarEstadoAnimal(String identificadorUnico, String sql, String nuevoEstado) {
         try (Connection conexion = ConexionBD.obtenerConexion();
              PreparedStatement pstmt = conexion.prepareStatement(sql)) {
@@ -153,7 +163,10 @@ public class AnimalControlador {
             System.err.println("Error al marcar el animal como " + nuevoEstado + " en la base de datos: " + e.getMessage());
         }
     }
-
+// Método para obtener el último identificador único de la tabla de animales
+    // Este método ejecuta una consulta SQL para seleccionar el último ID
+    // Se utiliza un PreparedStatement para evitar inyecciones SQL
+    // Se registra un log del ID obtenido
    public String obtenerUltimoIdentificadorUnico() {
     String sql = "SELECT identificador_unico FROM animales ORDER BY identificador_unico DESC LIMIT 1";
     String ultimoId = null;

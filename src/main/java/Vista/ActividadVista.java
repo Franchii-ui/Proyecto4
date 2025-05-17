@@ -7,14 +7,14 @@ import java.util.List;
 import Controlador.ActividadControlador;
 import Granja.Actividad;
 import Utilidades.InputHelper;
-
 public class ActividadVista {
     private final ActividadControlador actividadControlador;
 
     public ActividadVista(ActividadControlador actividadControlador) {
         this.actividadControlador = actividadControlador;
     }
-
+//Muestra el menú de actividades y permite al usuario seleccionar una opción.
+    
     public void mostrarMenuActividades() {
         int opcion;
         do {
@@ -33,7 +33,9 @@ public class ActividadVista {
             }
         } while (opcion != 3);
     }
-
+// Registra una nueva actividad en la base de datos.
+// Solicita al usuario la fecha y hora, el ID del empleado responsable, el tipo de actividad y los IDs de los animales involucrados.
+// Valida la entrada del usuario y crea un objeto Actividad.
     private void registrarNuevaActividad() {
         System.out.println("\n--- Registrar Nueva Actividad ---");
         LocalDateTime fechaHora = InputHelper.leerLocalDateTime("Fecha y Hora (yyyy-MM-dd HH:mm): ");
@@ -45,7 +47,8 @@ public class ActividadVista {
         Actividad nuevaActividad = new Actividad(0, fechaHora, empleadoId, tipo, String.join(",", animalesInvolucradosIds));
         actividadControlador.registrarActividadEnBD(nuevaActividad);
     }
-
+// Lee los IDs de los animales involucrados en la actividad.
+// Solicita al usuario que ingrese los IDs separados por comas y valida que sean enteros.
     private List<String> leerAnimalesInvolucrados() {
         List<String> animalesIds = new ArrayList<>();
         System.out.println("Ingrese los IDs de los animales involucrados (separados por comas, solo enteros):");
@@ -63,7 +66,8 @@ public class ActividadVista {
         }
         return animalesIds;
     }
-
+// Consulta una actividad existente en la base de datos.
+// Solicita al usuario el ID de la actividad y muestra los detalles si existe.
     private void consultarActividadExistente() {
         System.out.println("\n--- Consultar Actividad ---");
         int id = InputHelper.leerEnteroPositivo("Ingrese el ID de la actividad a consultar: ");

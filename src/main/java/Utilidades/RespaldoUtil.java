@@ -13,7 +13,9 @@ import Granja.Actividad;
 import Granja.Animal;
 
 public class RespaldoUtil {
-
+// Clase para generar un respaldo de la granja
+    // Nombre del archivo de respaldo
+    // Se puede cambiar a una ruta absoluta si se desea
     private static final String NOMBRE_ARCHIVO_RESPALDO = "respaldo_granja_" + LocalDate.now().format(DateTimeFormatter.ISO_DATE) + ".txt";
     private static final DateTimeFormatter FORMATO_FECHA_HORA = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 

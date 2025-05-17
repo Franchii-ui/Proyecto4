@@ -72,11 +72,11 @@ public class Actividad {
     public List<String> getAnimalesInvolucradosIds() {
         return animalesInvolucradosIds;
     }
-
+//Convierte la lista de IDs de animales involucrados a una cadena separada por comas.
     public void setAnimalesInvolucradosIds(List<String> animalesInvolucradosIds) {
         this.animalesInvolucradosIds = animalesInvolucradosIds;
     }
-
+//evuelve una representación en cadena de la actividad.
     @Override
     public String toString() {
         return "ID: " + idActividad + ", Fecha/Hora: " + fechaHora + ", Empleado ID: " + empleadoResponsableId +

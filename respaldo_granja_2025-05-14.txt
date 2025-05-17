@@ -1,10 +1,9 @@
---- RESPALDO DE LA GRANJA - 2025-05-14 13:55:30 ---
+--- RESPALDO DE LA GRANJA - 2025-05-14 18:33:22 ---
 
 --- ANIMALES ---
-ID: 1, Especie: perro, Raza: galgo, Nacimiento: 2023-11-03, Salud: excelente, Ubicación: zaragoza, Estado: Vendido
-ID: 2, Especie: perro, Raza: galgo, Nacimiento: 2022-10-20, Salud: Bueno, Ubicación: Zaragoza, Estado: Activo
+ID: 1, Especie: Cerdo, Raza: Vietnamita, Nacimiento: 2021-09-30, Salud: Excelente, Ubicación: Cuarte de Huerva, Estado: Activo
+ID: 2, Especie: perro, Raza: galgo, Nacimiento: 2022-10-20, Salud: Bueno, Ubicación: Pedrola, Estado: Vendido
 ID: 3, Especie: Cerdito oink, Raza: Vietnamita, Nacimiento: 2023-12-04, Salud: Vivo, Ubicación: Chiclana, Estado: Activo
-ID: 4, Especie: Perro, Raza: Chachicha, Nacimiento: 2021-02-16, Salud: Excelente, Ubicación: Zaragoza, Estado: Activo
 
 --- ACTIVIDADES ---
 ID: 1, Fecha/Hora: 2025-05-13T17:30, Empleado ID: 5, Tipo: Terminar informe, Animales: [1, 2, 3]

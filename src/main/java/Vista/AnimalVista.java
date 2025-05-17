@@ -11,7 +11,9 @@ public class AnimalVista {
     public AnimalVista(AnimalControlador animalControlador) {
         this.animalControlador = animalControlador;
     }
-
+// Constructor de la clase AnimalVista
+    // Inicializa el controlador de animales
+    // Este controlador se utiliza para interactuar con la base de datos de animales
     public void mostrarMenuAnimales() {
         int opcion;
         do {
@@ -41,7 +43,8 @@ public class AnimalVista {
             }
         } while (opcion != 8);
     }
-
+// Muestra el menú de gestión de animales y permite al usuario seleccionar una opción
+// Permite al usuario registrar un nuevo animal, editar uno existente, eliminarlo, consultar su información, marcarlo como vendido o fallecido, o trasladarlo a otra ubicación
   private void registrarNuevoAnimal() {
     System.out.println("\n--- Registrar Nuevo Animal ---");
     String id;
@@ -79,7 +82,8 @@ public class AnimalVista {
     Animal nuevoAnimal = new Animal(id, especie, raza, fechaNacimiento, estadoSalud, ubicacion);
     animalControlador.registrarAnimalEnBD(nuevoAnimal);
 }
-
+// Método para registrar un nuevo animal
+// Solicita al usuario el identificador único, especie, raza, fecha de nacimiento, estado de salud y ubicación
     private void editarAnimalExistente() {
         System.out.println("\n--- Editar Animal Existente ---");
         String id = InputHelper.leerStringNoVacio("Ingrese el Identificador Único del animal a editar: ");
@@ -99,7 +103,7 @@ public class AnimalVista {
             animalControlador.actualizarAnimalEnBD(animalActualizado);
         }
     }
-
+// Método para editar un animal existente
     private void eliminarAnimalExistente() {
         System.out.println("\n--- Eliminar Animal Existente ---");
         String id = InputHelper.leerStringNoVacio("Ingrese el Identificador Único del animal a eliminar: ");
@@ -114,19 +118,19 @@ public class AnimalVista {
             System.out.println(animal);
         }
     }
-
+//Vendido
     private void marcarVendido() {
         System.out.println("\n--- Marcar Animal como Vendido ---");
         String id = InputHelper.leerStringNoVacio("Ingrese el Identificador Único del animal: ");
         animalControlador.marcarAnimalComoVendidoEnBD(id);
     }
-
+// Fallecido
     private void marcarFallecido() {
         System.out.println("\n--- Marcar Animal como Fallecido ---");
         String id = InputHelper.leerStringNoVacio("Ingrese el Identificador Único del animal: ");
         animalControlador.marcarAnimalComoFallecidoEnBD(id);
     }
-
+// Trasladar
     private void trasladarAnimal() {
         System.out.println("\n--- Trasladar Animal ---");
         String id = InputHelper.leerStringNoVacio("Ingrese el Identificador Único del animal: ");

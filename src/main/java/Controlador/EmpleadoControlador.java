@@ -11,7 +11,7 @@ import Utilidades.ConexionBD;
 import Utilidades.LogUtil;
 
 public class EmpleadoControlador {
-
+//Resgistrar un nuevo empleado en la base de datos
     public void registrarEmpleadoEnBD(Empleado empleado) {
         String sql = "INSERT INTO empleados (nombre, rol, telefono, fecha_contratacion) VALUES (?, ?, ?, ?)";
         try (Connection conexion = ConexionBD.obtenerConexion();
@@ -28,7 +28,7 @@ public class EmpleadoControlador {
             System.err.println("Error al registrar el empleado en la base de datos: " + e.getMessage());
         }
     }
-
+// Método para buscar un empleado por su ID
     public Empleado buscarEmpleadoPorId(int idEmpleado) {
     String sql = "SELECT nombre, rol, telefono, fecha_contratacion FROM empleados WHERE id_empleado = ?";
     Empleado empleado = null;
@@ -47,7 +47,7 @@ public class EmpleadoControlador {
     }
     return empleado;
 }
-
+//ACtualizar un empleado en la base de datos
     public void actualizarEmpleadoEnBD(Empleado empleado) {
         String sql = "UPDATE empleados SET nombre = ?, rol = ?, telefono = ?, fecha_contratacion = ? WHERE id_empleado = ?";
         try (Connection conexion = ConexionBD.obtenerConexion();
@@ -70,7 +70,7 @@ public class EmpleadoControlador {
             System.err.println("Error al actualizar el empleado en la base de datos: " + e.getMessage());
         }
     }
-
+//Eliminar un empleado de la base de datos
     public void eliminarEmpleadoEnBD(int idEmpleado) {
         String sql = "DELETE FROM empleados WHERE id_empleado = ?";
         try (Connection conexion = ConexionBD.obtenerConexion();

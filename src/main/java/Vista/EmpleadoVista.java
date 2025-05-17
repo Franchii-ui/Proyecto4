@@ -1,6 +1,8 @@
 package Vista;
 
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
 
 import Controlador.EmpleadoControlador;
 import Granja.Empleado;
@@ -39,7 +41,7 @@ public class EmpleadoVista {
     private void registrarNuevoEmpleado() {
         System.out.println("\n--- Registrar Nuevo Empleado ---");
         String nombre = InputHelper.leerStringNoVacio("Nombre: ");
-        String rol = InputHelper.leerString("Rol: ");
+        String rol = seleccionarRol("Rol: ");
         String telefono = InputHelper.leerTelefono("Teléfono (máximo 9 dígitos numéricos): ");
         LocalDate fechaContratacion = InputHelper.leerLocalDate("Fecha de Contratación (yyyy-MM-dd): ");
         if (fechaContratacion == null) return;
@@ -54,15 +56,16 @@ public class EmpleadoVista {
         Empleado empleadoExistente = empleadoControlador.buscarEmpleadoPorId(id);
         if (empleadoExistente != null) {
             System.out.print("Nuevo Nombre (" + empleadoExistente.getNombre() + "): ");
-            String nombre = InputHelper.leerString("");
-            System.out.print("Nuevo Rol (" + empleadoExistente.getRol() + "): ");
-            String rol = InputHelper.leerString("");
-            System.out.print("Nuevo Teléfono (" + empleadoExistente.getTelefono() + ", máximo 9 dígitos numéricos): ");
+            String nombre = InputHelper.leerString("").isEmpty() ? empleadoExistente.getNombre() : InputHelper.leerString("");
+            String rol = seleccionarRol("Nuevo Rol (" + empleadoExistente.getRol() + "): ");
             String telefono = InputHelper.leerTelefono("");
             if (telefono.isEmpty()) telefono = empleadoExistente.getTelefono();
             LocalDate fechaContratacion = InputHelper.leerLocalDate("Nueva Fecha de Contratación (yyyy-MM-dd) (" + empleadoExistente.getFechaContratacion() + "): ");
 
-            Empleado empleadoActualizado = new Empleado(id, nombre, rol, telefono, fechaContratacion == null ? empleadoExistente.getFechaContratacion() : fechaContratacion);
+            Empleado empleadoActualizado = new Empleado(id, nombre.isEmpty() ? empleadoExistente.getNombre() : nombre,
+                                                    rol.isEmpty() ? empleadoExistente.getRol() : rol,
+                                                    telefono,
+                                                    fechaContratacion == null ? empleadoExistente.getFechaContratacion() : fechaContratacion);
             empleadoControlador.actualizarEmpleadoEnBD(empleadoActualizado);
         }
     }
@@ -79,6 +82,28 @@ public class EmpleadoVista {
         Empleado empleado = empleadoControlador.buscarEmpleadoPorId(id);
         if (empleado != null) {
             System.out.println(empleado);
+        }
+    }
+
+    private String seleccionarRol(String mensaje) {
+        List<String> rolesPredeterminados = Arrays.asList("Veterinario", "Peón", "Encargado", "Otro");
+        System.out.println("\n--- Roles Predeterminados ---");
+        for (int i = 0; i < rolesPredeterminados.size(); i++) {
+            System.out.println((i + 1) + ". " + rolesPredeterminados.get(i));
+        }
+        System.out.print(mensaje + " (seleccione número o ingrese otro): ");
+        String entrada = InputHelper.leerString("");
+        try {
+            int opcionRol = Integer.parseInt(entrada);
+            if (opcionRol > 0 && opcionRol <= rolesPredeterminados.size()) {
+                return rolesPredeterminados.get(opcionRol - 1);
+            } else {
+                System.out.print("Ingrese el rol: ");
+                return InputHelper.leerStringNoVacio("");
+            }
+        } catch (NumberFormatException e) {
+            System.out.print("Ingrese el rol: ");
+            return InputHelper.leerStringNoVacio("");
         }
     }
 }

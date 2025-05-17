@@ -64,7 +64,8 @@ public class ConsolaVista {
         } while (opcion != 5);
     }
 
-    // Métodos parseDate y parseDateTime (ahora protected)
+    // Métodos parseDate y parseDateTime para convertir cadenas a LocalDate y LocalDateTime
+    // con manejo de excepciones
 
     protected LocalDate parseDate(String dateStr) {
         try {
@@ -84,6 +85,9 @@ public class ConsolaVista {
         }
     }
 
+    // Método main para iniciar la aplicación
+    // Crea instancias de los controladores y la vista, y muestra el menú principal
+    // Este método es el punto de entrada de la aplicación
     public static void main(String[] args) {
         AnimalControlador animalControlador = new AnimalControlador();
         EmpleadoControlador empleadoControlador = new EmpleadoControlador();

@@ -11,7 +11,8 @@ public class InputHelper {
     private static final Scanner scanner = new Scanner(System.in);
     private static final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-
+//
+    // Método para leer un número entero positivo
     public static String leerStringNoVacio(String mensaje) {
         String input;
         do {
@@ -24,11 +25,11 @@ public class InputHelper {
         return input;
     }
 
+
     public static String leerString(String mensaje) {
         System.out.print(mensaje);
         return scanner.nextLine().trim();
     }
-
     public static int leerEnteroPositivo(String mensaje) {
         int id;
         while (true) {

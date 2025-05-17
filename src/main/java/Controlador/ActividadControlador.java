@@ -13,7 +13,11 @@ import Utilidades.ConexionBD;
 import Utilidades.LogUtil;
 
 public class ActividadControlador {
-
+// Método para registrar una actividad en la base de datos
+    // Este método toma un objeto Actividad y lo inserta en la tabla de actividades
+    // Se utiliza un PreparedStatement para evitar inyecciones SQL
+    // Se registra un log de la actividad registrada
+    // Se maneja la excepción SQLException para capturar errores de la base de datos
     public void registrarActividadEnBD(Actividad actividad) {
         String sql = "INSERT INTO actividades (fecha_hora, empleado_responsable_id, tipo, animales_involucrados_ids) VALUES (?, ?, ?, ?)";
         try (Connection conexion = ConexionBD.obtenerConexion();
@@ -30,6 +34,8 @@ public class ActividadControlador {
             System.err.println("Error al registrar la actividad en la base de datos: " + e.getMessage());
         }
     }
+    // Método para obtener todas las actividades de la base de datos
+    // Este método ejecuta una consulta SQL para seleccionar todas las actividades
     public List<Actividad> obtenerTodasLasActividades() {
     String sql = "SELECT id_actividad, fecha_hora, empleado_responsable_id, tipo, animales_involucrados_ids FROM actividades";
     List<Actividad> actividades = new ArrayList<>();
@@ -50,7 +56,10 @@ public class ActividadControlador {
     }
     return actividades;
 }
-
+// Método para buscar una actividad por su ID
+    // Este método toma un ID de actividad y ejecuta una consulta SQL para buscarla
+    // Se utiliza un PreparedStatement para evitar inyecciones SQL
+    // Se registra un log de la actividad consultada
     public Actividad buscarActividadPorId(int idActividad) {
         String sql = "SELECT fecha_hora, empleado_responsable_id, tipo, animales_involucrados_ids FROM actividades WHERE id_actividad = ?";
         Actividad actividad = null;

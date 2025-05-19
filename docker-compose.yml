@@ -1,0 +1,27 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql_container
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: granja_db
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  java_app:
+    build: .
+    container_name: java_container
+    depends_on:
+      - mysql
+    environment:
+      DB_HOST: mysql
+      DB_NAME: granja_db
+      DB_USER: root
+      DB_PASS: rootpass
+    ports:
+      - "8080:8080"
+
+volumes:
+  mysql_data:
